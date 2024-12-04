@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:lottie/lottie.dart';
 import 'package:message_app/views/screens/messaging/chats.dart';
+import 'package:message_app/views/screens/messaging/select_contact.dart';
 
 class MessagingScreen extends StatefulWidget {
   const MessagingScreen({super.key});
@@ -20,9 +21,7 @@ class _MessagingScreenState extends State<MessagingScreen> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        floatingActionButton: haveChats ? FloatingActionButton(onPressed: (){
-
-        },
+        floatingActionButton: haveChats ? FloatingActionButton(onPressed: (){},
           backgroundColor: Colors.pink,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30)
@@ -94,7 +93,6 @@ class _MessagingScreenState extends State<MessagingScreen> {
     return LayoutBuilder(
       builder: (context, constraints) {
         double imageSize = constraints.maxWidth * 0.4; //For responsiveness
-
         return Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -109,9 +107,12 @@ class _MessagingScreenState extends State<MessagingScreen> {
                 'Hey!!',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
               ),
-              Text(
-                'Tap to start a new chat',
-                style: TextStyle(fontSize: 19, color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w600),
+              TextButton(
+               onPressed: () { 
+                 Navigator.push(context, MaterialPageRoute(builder: (context)=>CGSelectContactScreen()));
+               },
+               child: Text( 'Tap to start a new chat',
+                style: TextStyle(fontSize: 19, color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w600)),
               ),
               const Spacer(),
               const SizedBox(height: 100),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:message_app/views/screens/messaging/invite_chats.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
